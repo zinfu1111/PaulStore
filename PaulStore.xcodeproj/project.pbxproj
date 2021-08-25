@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,10 @@
 		9C3757FF26D55B050013D5F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C3757FD26D55B050013D5F1 /* Main.storyboard */; };
 		9C37580126D55B0A0013D5F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C37580026D55B0A0013D5F1 /* Assets.xcassets */; };
 		9C37580426D55B0A0013D5F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C37580226D55B0A0013D5F1 /* LaunchScreen.storyboard */; };
+		9C37580C26D55DD90013D5F1 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C37580B26D55DD90013D5F1 /* APIService.swift */; };
+		9C37580E26D57CEF0013D5F1 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C37580D26D57CEF0013D5F1 /* Product.swift */; };
+		9CC480EF26D6ABE300FFF068 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9CC480EE26D6ABE300FFF068 /* Alamofire */; };
+		9CC480F126D6AC6600FFF068 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC480F026D6AC6600FFF068 /* PhotoManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,11 @@
 		9C37580026D55B0A0013D5F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C37580326D55B0A0013D5F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C37580526D55B0A0013D5F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C37580B26D55DD90013D5F1 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		9C37580D26D57CEF0013D5F1 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		9CC480EB26D6AB0700FFF068 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		9CC480EC26D6AB0700FFF068 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		9CC480F026D6AC6600FFF068 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CC480EF26D6ABE300FFF068 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +73,9 @@
 				9C37580026D55B0A0013D5F1 /* Assets.xcassets */,
 				9C37580226D55B0A0013D5F1 /* LaunchScreen.storyboard */,
 				9C37580526D55B0A0013D5F1 /* Info.plist */,
+				9C37580B26D55DD90013D5F1 /* APIService.swift */,
+				9C37580D26D57CEF0013D5F1 /* Product.swift */,
+				9CC480F026D6AC6600FFF068 /* PhotoManager.swift */,
 			);
 			path = PaulStore;
 			sourceTree = "<group>";
@@ -83,6 +96,9 @@
 			dependencies = (
 			);
 			name = PaulStore;
+			packageProductDependencies = (
+				9CC480EE26D6ABE300FFF068 /* Alamofire */,
+			);
 			productName = PaulStore;
 			productReference = 9C3757F426D55B050013D5F1 /* PaulStore.app */;
 			productType = "com.apple.product-type.application";
@@ -108,8 +124,12 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = 9C3757EB26D55B050013D5F1;
+			packageReferences = (
+				9CC480ED26D6ABE300FFF068 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 9C3757F526D55B050013D5F1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,7 +157,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CC480F126D6AC6600FFF068 /* PhotoManager.swift in Sources */,
 				9C3757FC26D55B050013D5F1 /* ViewController.swift in Sources */,
+				9C37580C26D55DD90013D5F1 /* APIService.swift in Sources */,
+				9C37580E26D57CEF0013D5F1 /* Product.swift in Sources */,
 				9C3757F826D55B050013D5F1 /* AppDelegate.swift in Sources */,
 				9C3757FA26D55B050013D5F1 /* SceneDelegate.swift in Sources */,
 			);
@@ -150,6 +173,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9C3757FE26D55B050013D5F1 /* Base */,
+				9CC480EB26D6AB0700FFF068 /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -158,6 +182,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9C37580326D55B0A0013D5F1 /* Base */,
+				9CC480EC26D6AB0700FFF068 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -169,6 +194,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -216,7 +242,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -230,6 +256,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -271,7 +298,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -289,6 +316,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5K2D8EVZ5V;
 				INFOPLIST_FILE = PaulStore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,6 +336,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5K2D8EVZ5V;
 				INFOPLIST_FILE = PaulStore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -341,6 +370,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9CC480ED26D6ABE300FFF068 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9CC480EE26D6ABE300FFF068 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CC480ED26D6ABE300FFF068 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9C3757EC26D55B050013D5F1 /* Project object */;
 }
