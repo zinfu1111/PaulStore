@@ -57,6 +57,7 @@ extension APIService {
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data {
                 let json = String(data: data, encoding: .utf8)
+                //有印出來
                 print("[API] response:\(json)")
                 do {
                     let jsonDecoder = JSONDecoder()

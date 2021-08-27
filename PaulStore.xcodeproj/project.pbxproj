@@ -7,9 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C00E56C26D9742A009570D3 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C00E56B26D9742A009570D3 /* ProductDetailViewController.swift */; };
+		9C00E57326D97663009570D3 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C00E57226D97663009570D3 /* Banner.swift */; };
+		9C096C4826D6C2EA00EBE935 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C096C4726D6C2EA00EBE935 /* ProductCell.swift */; };
+		9C096C4A26D76E8000EBE935 /* QuantityControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C096C4926D76E8000EBE935 /* QuantityControlView.swift */; };
+		9C096C4C26D76E9000EBE935 /* QuantityControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C096C4B26D76E9000EBE935 /* QuantityControlView.xib */; };
+		9C096C4E26D7C0CC00EBE935 /* ProductHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C096C4D26D7C0CB00EBE935 /* ProductHeaderCollectionReusableView.swift */; };
+		9C096C8626D80B2B00EBE935 /* BannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C096C8526D80B2B00EBE935 /* BannerCell.swift */; };
+		9C096C8826D813D400EBE935 /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C096C8726D813D400EBE935 /* OrderManager.swift */; };
+		9C096C8A26D8152300EBE935 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C096C8926D8152300EBE935 /* Order.swift */; };
 		9C3757F826D55B050013D5F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3757F726D55B050013D5F1 /* AppDelegate.swift */; };
 		9C3757FA26D55B050013D5F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3757F926D55B050013D5F1 /* SceneDelegate.swift */; };
-		9C3757FC26D55B050013D5F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3757FB26D55B050013D5F1 /* ViewController.swift */; };
+		9C3757FC26D55B050013D5F1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3757FB26D55B050013D5F1 /* HomeViewController.swift */; };
 		9C3757FF26D55B050013D5F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C3757FD26D55B050013D5F1 /* Main.storyboard */; };
 		9C37580126D55B0A0013D5F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C37580026D55B0A0013D5F1 /* Assets.xcassets */; };
 		9C37580426D55B0A0013D5F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C37580226D55B0A0013D5F1 /* LaunchScreen.storyboard */; };
@@ -20,10 +29,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C00E56B26D9742A009570D3 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		9C00E57226D97663009570D3 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
+		9C096C4726D6C2EA00EBE935 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		9C096C4926D76E8000EBE935 /* QuantityControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityControlView.swift; sourceTree = "<group>"; };
+		9C096C4B26D76E9000EBE935 /* QuantityControlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuantityControlView.xib; sourceTree = "<group>"; };
+		9C096C4D26D7C0CB00EBE935 /* ProductHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		9C096C8526D80B2B00EBE935 /* BannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCell.swift; sourceTree = "<group>"; };
+		9C096C8726D813D400EBE935 /* OrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderManager.swift; sourceTree = "<group>"; };
+		9C096C8926D8152300EBE935 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		9C3757F426D55B050013D5F1 /* PaulStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaulStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3757F726D55B050013D5F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C3757F926D55B050013D5F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9C3757FB26D55B050013D5F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9C3757FB26D55B050013D5F1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9C3757FE26D55B050013D5F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C37580026D55B0A0013D5F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C37580326D55B0A0013D5F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +65,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C00E56A26D9740B009570D3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9C00E56B26D9742A009570D3 /* ProductDetailViewController.swift */,
+				9C3757FB26D55B050013D5F1 /* HomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9C00E56D26D9759D009570D3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9C096C4D26D7C0CB00EBE935 /* ProductHeaderCollectionReusableView.swift */,
+				9C096C4726D6C2EA00EBE935 /* ProductCell.swift */,
+				9C096C8526D80B2B00EBE935 /* BannerCell.swift */,
+				9C096C4926D76E8000EBE935 /* QuantityControlView.swift */,
+				9C096C4B26D76E9000EBE935 /* QuantityControlView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9C00E56E26D975A3009570D3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9C37580D26D57CEF0013D5F1 /* Product.swift */,
+				9C096C8926D8152300EBE935 /* Order.swift */,
+				9C00E57226D97663009570D3 /* Banner.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9C00E56F26D975AC009570D3 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				9C096C8726D813D400EBE935 /* OrderManager.swift */,
+				9C37580B26D55DD90013D5F1 /* APIService.swift */,
+				9CC480F026D6AC6600FFF068 /* PhotoManager.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		9C00E57026D975B4009570D3 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		9C00E57126D975C4009570D3 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				9C3757F726D55B050013D5F1 /* AppDelegate.swift */,
+				9C3757F926D55B050013D5F1 /* SceneDelegate.swift */,
+				9C3757FD26D55B050013D5F1 /* Main.storyboard */,
+				9C37580026D55B0A0013D5F1 /* Assets.xcassets */,
+				9C37580226D55B0A0013D5F1 /* LaunchScreen.storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		9C3757EB26D55B050013D5F1 = {
 			isa = PBXGroup;
 			children = (
@@ -66,16 +144,13 @@
 		9C3757F626D55B050013D5F1 /* PaulStore */ = {
 			isa = PBXGroup;
 			children = (
-				9C3757F726D55B050013D5F1 /* AppDelegate.swift */,
-				9C3757F926D55B050013D5F1 /* SceneDelegate.swift */,
-				9C3757FB26D55B050013D5F1 /* ViewController.swift */,
-				9C3757FD26D55B050013D5F1 /* Main.storyboard */,
-				9C37580026D55B0A0013D5F1 /* Assets.xcassets */,
-				9C37580226D55B0A0013D5F1 /* LaunchScreen.storyboard */,
+				9C00E57126D975C4009570D3 /* Resource */,
+				9C00E57026D975B4009570D3 /* Extension */,
+				9C00E56F26D975AC009570D3 /* Helper */,
+				9C00E56E26D975A3009570D3 /* Models */,
+				9C00E56D26D9759D009570D3 /* Views */,
+				9C00E56A26D9740B009570D3 /* Controllers */,
 				9C37580526D55B0A0013D5F1 /* Info.plist */,
-				9C37580B26D55DD90013D5F1 /* APIService.swift */,
-				9C37580D26D57CEF0013D5F1 /* Product.swift */,
-				9CC480F026D6AC6600FFF068 /* PhotoManager.swift */,
 			);
 			path = PaulStore;
 			sourceTree = "<group>";
@@ -144,6 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C096C4C26D76E9000EBE935 /* QuantityControlView.xib in Resources */,
 				9C37580426D55B0A0013D5F1 /* LaunchScreen.storyboard in Resources */,
 				9C37580126D55B0A0013D5F1 /* Assets.xcassets in Resources */,
 				9C3757FF26D55B050013D5F1 /* Main.storyboard in Resources */,
@@ -157,12 +233,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C096C8826D813D400EBE935 /* OrderManager.swift in Sources */,
+				9C096C4A26D76E8000EBE935 /* QuantityControlView.swift in Sources */,
+				9C096C8626D80B2B00EBE935 /* BannerCell.swift in Sources */,
 				9CC480F126D6AC6600FFF068 /* PhotoManager.swift in Sources */,
-				9C3757FC26D55B050013D5F1 /* ViewController.swift in Sources */,
+				9C00E56C26D9742A009570D3 /* ProductDetailViewController.swift in Sources */,
+				9C3757FC26D55B050013D5F1 /* HomeViewController.swift in Sources */,
 				9C37580C26D55DD90013D5F1 /* APIService.swift in Sources */,
+				9C096C8A26D8152300EBE935 /* Order.swift in Sources */,
 				9C37580E26D57CEF0013D5F1 /* Product.swift in Sources */,
 				9C3757F826D55B050013D5F1 /* AppDelegate.swift in Sources */,
+				9C096C4826D6C2EA00EBE935 /* ProductCell.swift in Sources */,
+				9C00E57326D97663009570D3 /* Banner.swift in Sources */,
 				9C3757FA26D55B050013D5F1 /* SceneDelegate.swift in Sources */,
+				9C096C4E26D7C0CC00EBE935 /* ProductHeaderCollectionReusableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

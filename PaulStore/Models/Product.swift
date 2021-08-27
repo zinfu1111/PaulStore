@@ -20,7 +20,7 @@ struct Product {
         struct Fields: Codable {
             let name: String
             let point: Double
-            let stock: Double
+            let stock: Int
             let note: String
             let photos: [ImageData]
         }
