@@ -16,12 +16,20 @@ class HomeViewController: UIViewController {
     private var productData = Product.List(records: [])
     private var bannerData = Banner.List(records: [])
     
+    var selectedIndexPath:IndexPath?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         
         banner.sendRequest(method: .get, reponse: Banner.List.self, completion: setupBannerData(result:))
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.selectedIndexPath = nil
     }
     
     func setupBannerData(result: Result<Banner.List,Error>) {
@@ -52,9 +60,9 @@ class HomeViewController: UIViewController {
     }
     
     @IBSegueAction func showDetail(_ coder: NSCoder) -> ProductDetailViewController? {
-        guard let indexPath = self.collectionView.indexPathsForSelectedItems?.first
+        guard let indexPath = self.selectedIndexPath == nil ? self.collectionView.indexPathsForSelectedItems?.first : selectedIndexPath
               else { return nil}
-        return ProductDetailViewController(coder: coder, product: self.productData.records[indexPath.row].fields)
+        return ProductDetailViewController(coder: coder, product: self.productData.records[indexPath.row])
     }
 }
 
@@ -75,7 +83,6 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(productData.records.count)
         return productData.records.count
     }
     

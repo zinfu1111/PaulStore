@@ -20,12 +20,13 @@ class ProductDetailViewController: UITableViewController {
     @IBOutlet weak var stockLabel: UILabel!
     @IBOutlet weak var pointLabel: UILabel!
     @IBOutlet weak var quantityGroupView: UIView!
+    @IBOutlet weak var noteTextView:UITextView!
     @IBOutlet weak var pageControl: UIPageControl!
     
     var quantityControlView:QuantityControlView!
-    let product:Product.List.Fields
+    let product:Product.List.Record
     
-    init?(coder: NSCoder, product:Product.List.Fields){
+    init?(coder: NSCoder, product:Product.List.Record){
         self.product = product
         super.init(coder: coder)
     }
@@ -36,18 +37,22 @@ class ProductDetailViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        quantityControlView = QuantityControlView(frame: quantityGroupView.bounds)
-        quantityControlView.product = product
+        quantityControlView = QuantityControlView()
+        quantityControlView.product = product.fields
         quantityGroupView.addSubview(quantityControlView)
-        nameLabel.text = product.name
-        stockLabel.text = "剩餘：\(product.stock)"
-        pointLabel.text = "$\(product.point)"
-        
+        nameLabel.text = product.fields.name
+        stockLabel.text = "剩餘：\(product.fields.stock)"
+        pointLabel.text = "$\(product.fields.point)"
+        noteTextView.text = product.fields.note
 
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        quantityControlView.frame = quantityGroupView.bounds
+        quantityGroupView.layer.borderWidth = 1
+        quantityGroupView.layer.borderColor = UIColor.black.cgColor
+        quantityGroupView.layer.cornerRadius = quantityGroupView.frame.height/2
         configureCellSize()
     }
     
@@ -64,23 +69,24 @@ class ProductDetailViewController: UITableViewController {
         flowLayout?.minimumLineSpacing = 0
             
     }
+    
     @IBAction func addProduct(_ sender: Any) {
-        
+        OrderManager.shared.addOrder(by: product.id, add: quantityControlView.quantity)
     }
     
 }
 extension ProductDetailViewController: UICollectionViewDataSource,UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        pageControl.numberOfPages = product.photos.count
-        return product.photos.count
+        pageControl.numberOfPages = product.fields.photos.count
+        return product.fields.photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(BannerCell.self)", for: indexPath) as! BannerCell
         
-        let photo = product.photos[indexPath.row]
-        cell.downloadPhoto(url: photo.url)
+        let photo = product.fields.photos[indexPath.row]
+        cell.downloadPhoto(imageData: photo)
         
         return cell
         

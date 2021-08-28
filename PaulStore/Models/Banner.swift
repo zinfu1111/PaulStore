@@ -21,9 +21,6 @@ struct Banner {
             let photo: [ImageData]
         }
         
-        struct ImageData: Codable {
-            let url: URL
-        }
         
     }
     
@@ -38,9 +35,6 @@ struct Banner {
             let photo: [ImageData]
         }
         
-        struct ImageData: Codable {
-            let url: URL
-        }
         
     }
     
@@ -56,9 +50,6 @@ struct Banner {
             let photo: [ImageData]
         }
         
-        struct ImageData: Codable {
-            let url: URL
-        }
         
     }
     

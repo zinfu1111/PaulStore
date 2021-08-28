@@ -25,10 +25,6 @@ struct Product {
             let photos: [ImageData]
         }
         
-        struct ImageData: Codable {
-            let url: URL
-        }
-        
     }
     
     struct Create:Encodable {
@@ -46,9 +42,6 @@ struct Product {
             let photos: [ImageData]
         }
         
-        struct ImageData: Codable {
-            let url: URL
-        }
     }
     
     struct Update:Encodable {
@@ -67,9 +60,6 @@ struct Product {
             let photos: [ImageData]
         }
         
-        struct ImageData: Codable {
-            let url: URL
-        }
     }
     
     struct Delete:Decodable {

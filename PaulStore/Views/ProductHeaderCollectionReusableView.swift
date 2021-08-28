@@ -38,6 +38,9 @@ class ProductHeaderCollectionReusableView: UICollectionReusableView {
             
     }
 
+    @IBAction func pageChange(_ sender: UIPageControl) {
+        collectionView.selectItem(at: IndexPath(row: sender.currentPage, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+    }
 }
 
 extension ProductHeaderCollectionReusableView: UICollectionViewDataSource,UICollectionViewDelegate {
@@ -50,7 +53,7 @@ extension ProductHeaderCollectionReusableView: UICollectionViewDataSource,UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(BannerCell.self)", for: indexPath) as! BannerCell
         
         let photo = bannerData.fields.photo[indexPath.row]
-        cell.downloadPhoto(url: photo.url)
+        cell.downloadPhoto(imageData: photo)
         
         return cell
         

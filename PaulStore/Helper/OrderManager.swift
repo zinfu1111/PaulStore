@@ -11,6 +11,17 @@ class OrderManager {
     
     static let shared = OrderManager()
     
-    var list = [Order.List.Record]()
+    ///ProductId,Quantity
+    var list = [String:Int]()
     
+    
+    func addOrder(by productId:String,add quantity: Int) {
+        
+        if list.keys.first(where: {$0 == productId}) != nil {
+            list[productId] = quantity + list[productId]!
+        }else{
+            list.updateValue(quantity, forKey: productId)
+        }
+        print("[OrderManager] list",list)
+    }
 }

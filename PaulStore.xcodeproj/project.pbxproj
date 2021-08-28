@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		9C00E56C26D9742A009570D3 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C00E56B26D9742A009570D3 /* ProductDetailViewController.swift */; };
 		9C00E57326D97663009570D3 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C00E57226D97663009570D3 /* Banner.swift */; };
+		9C00E57526D9F7CD009570D3 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C00E57426D9F7CD009570D3 /* ImageData.swift */; };
+		9C00E57926DA8B86009570D3 /* Ext+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C00E57826DA8B86009570D3 /* Ext+UIView.swift */; };
+		9C00E57B26DA8E14009570D3 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C00E57A26DA8E14009570D3 /* OrderViewController.swift */; };
+		9C00E57F26DA907F009570D3 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C00E57E26DA907F009570D3 /* OrderCell.swift */; };
 		9C096C4826D6C2EA00EBE935 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C096C4726D6C2EA00EBE935 /* ProductCell.swift */; };
 		9C096C4A26D76E8000EBE935 /* QuantityControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C096C4926D76E8000EBE935 /* QuantityControlView.swift */; };
 		9C096C4C26D76E9000EBE935 /* QuantityControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C096C4B26D76E9000EBE935 /* QuantityControlView.xib */; };
@@ -31,6 +35,11 @@
 /* Begin PBXFileReference section */
 		9C00E56B26D9742A009570D3 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		9C00E57226D97663009570D3 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
+		9C00E57426D9F7CD009570D3 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
+		9C00E57826DA8B86009570D3 /* Ext+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIView.swift"; sourceTree = "<group>"; };
+		9C00E57A26DA8E14009570D3 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		9C00E57E26DA907F009570D3 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		9C00E58026DA996F009570D3 /* test.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = test.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9C096C4726D6C2EA00EBE935 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		9C096C4926D76E8000EBE935 /* QuantityControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityControlView.swift; sourceTree = "<group>"; };
 		9C096C4B26D76E9000EBE935 /* QuantityControlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuantityControlView.xib; sourceTree = "<group>"; };
@@ -70,6 +79,7 @@
 			children = (
 				9C00E56B26D9742A009570D3 /* ProductDetailViewController.swift */,
 				9C3757FB26D55B050013D5F1 /* HomeViewController.swift */,
+				9C00E57A26DA8E14009570D3 /* OrderViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -82,6 +92,7 @@
 				9C096C8526D80B2B00EBE935 /* BannerCell.swift */,
 				9C096C4926D76E8000EBE935 /* QuantityControlView.swift */,
 				9C096C4B26D76E9000EBE935 /* QuantityControlView.xib */,
+				9C00E57E26DA907F009570D3 /* OrderCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -92,6 +103,7 @@
 				9C37580D26D57CEF0013D5F1 /* Product.swift */,
 				9C096C8926D8152300EBE935 /* Order.swift */,
 				9C00E57226D97663009570D3 /* Banner.swift */,
+				9C00E57426D9F7CD009570D3 /* ImageData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -109,6 +121,7 @@
 		9C00E57026D975B4009570D3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				9C00E57826DA8B86009570D3 /* Ext+UIView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -144,6 +157,7 @@
 		9C3757F626D55B050013D5F1 /* PaulStore */ = {
 			isa = PBXGroup;
 			children = (
+				9C00E58026DA996F009570D3 /* test.playground */,
 				9C00E57126D975C4009570D3 /* Resource */,
 				9C00E57026D975B4009570D3 /* Extension */,
 				9C00E56F26D975AC009570D3 /* Helper */,
@@ -237,15 +251,19 @@
 				9C096C4A26D76E8000EBE935 /* QuantityControlView.swift in Sources */,
 				9C096C8626D80B2B00EBE935 /* BannerCell.swift in Sources */,
 				9CC480F126D6AC6600FFF068 /* PhotoManager.swift in Sources */,
+				9C00E57F26DA907F009570D3 /* OrderCell.swift in Sources */,
 				9C00E56C26D9742A009570D3 /* ProductDetailViewController.swift in Sources */,
 				9C3757FC26D55B050013D5F1 /* HomeViewController.swift in Sources */,
 				9C37580C26D55DD90013D5F1 /* APIService.swift in Sources */,
 				9C096C8A26D8152300EBE935 /* Order.swift in Sources */,
+				9C00E57B26DA8E14009570D3 /* OrderViewController.swift in Sources */,
+				9C00E57526D9F7CD009570D3 /* ImageData.swift in Sources */,
 				9C37580E26D57CEF0013D5F1 /* Product.swift in Sources */,
 				9C3757F826D55B050013D5F1 /* AppDelegate.swift in Sources */,
 				9C096C4826D6C2EA00EBE935 /* ProductCell.swift in Sources */,
 				9C00E57326D97663009570D3 /* Banner.swift in Sources */,
 				9C3757FA26D55B050013D5F1 /* SceneDelegate.swift in Sources */,
+				9C00E57926DA8B86009570D3 /* Ext+UIView.swift in Sources */,
 				9C096C4E26D7C0CC00EBE935 /* ProductHeaderCollectionReusableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

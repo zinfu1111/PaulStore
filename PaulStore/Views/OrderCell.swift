@@ -1,53 +1,59 @@
 //
-//  ProductCell.swift
+//  OrderCell.swift
 //  PaulStore
 //
-//  Created by 連振甫 on 2021/8/26.
+//  Created by 連振甫 on 2021/8/28.
 //
 
 import UIKit
 
-class ProductCell: UICollectionViewCell {
-    
+class OrderCell: UITableViewCell {
+
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var pointLabel:UILabel!
-    @IBOutlet weak var BgView: UIView!
-    @IBOutlet weak var addProductButton: UIButton!
+    @IBOutlet weak var pointLabel: UILabel!
+    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var quantityStepper: UIStepper!
     @IBOutlet weak var photoWidth: NSLayoutConstraint!
-    @IBOutlet weak var cellWidthConstraints: NSLayoutConstraint!
-    static let width = floor((UIScreen.main.bounds.width - 20) / 2)
     
-    var product:Product.List.Record!
-    
+    private var product:Product.List.Record!
+    private var quantity:Int!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        cellWidthConstraints?.constant = Self.width
+        // Initialization code
     }
-    
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        //陰影
-        self.layer.shadowOpacity = 0.2
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 0)
-        
-        self.addProductButton.layer.cornerRadius = self.addProductButton.frame.height/2
-        
         configPhotoSize()
     }
     
-    func setup(for product:Product.List.Record){
-        
+    func set(for product:Product.List.Record,quantity:Int) {
+        quantityStepper.isHidden = false
         self.product = product
+        self.quantity = quantity
         
         nameLabel.text = product.fields.name
         pointLabel.text = "$\(product.fields.point)"
-        
+        quantityLabel.text = "\(quantity)"
+        quantityStepper.value = Double(quantity)
         
         downloadPhoto()
+    }
+    
+    func notfoundProduct() {
+        quantityStepper.isHidden = true
+        nameLabel.text = "無此產品"
+        pointLabel.text = ""
+        quantityLabel.text = ""
+        
     }
     
     private func configPhotoSize(){
@@ -81,18 +87,8 @@ class ProductCell: UICollectionViewCell {
         }
         
     }
-    
-    @IBAction func addProduct(_ sender: Any) {
-        guard let superView = self.superview as? UICollectionView else {
-                print("superview is not a UITableView - getIndexPath")
-                return
-            }
-        let indexPath = superView.indexPath(for: self)
-        
-        guard let superVC = parentViewController as? HomeViewController else { return }
-        OrderManager.shared.addOrder(by: product.id, add: 1)
-//        superVC.selectedIndexPath = indexPath
-        superVC.performSegue(withIdentifier: "showOrder", sender: nil)
+
+    @IBAction func stepperChange(_ sender: UIStepper) {
         
     }
 }
