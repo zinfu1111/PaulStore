@@ -52,6 +52,9 @@ extension APIService {
         
         if let body = body {
             request.httpBody = body
+            
+            let json = String(data: body, encoding: .utf8)
+            print("[API] request:\(json)")
         }
         
         URLSession.shared.dataTask(with: request) { data, response, error in

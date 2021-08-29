@@ -7,9 +7,12 @@
 
 import UIKit
 
-class OrderViewController: UITableViewController {
+class OrderViewController: UIViewController {
     
     @IBOutlet weak var emptyRstaurantView:UIView!
+    @IBOutlet weak var tableView:UITableView!
+    @IBOutlet weak var checkButton: UIButton!
+    
     
     private var orderData = [String:Int]()
     private var product = Product()
@@ -18,9 +21,25 @@ class OrderViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.topItem?.title = ""
+        
         tableView.backgroundView = emptyRstaurantView
         tableView.backgroundView?.isHidden = true
         product.sendRequest(method: .get, reponse: Product.List.self, completion: setupProductData(result:))
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.topItem?.title = "購物車"
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.checkButton.layer.cornerRadius = self.checkButton.frame.height / 2
     }
     
     func setupProductData(result: Result<Product.List,Error>) {
@@ -29,30 +48,41 @@ class OrderViewController: UITableViewController {
             self.productData = data
             self.orderData = OrderManager.shared.list
             DispatchQueue.main.async {
-                if self.orderData.count > 0 {
-                    self.tableView.backgroundView?.isHidden = true
-                    self.tableView.separatorStyle = .singleLine
-                    self.tableView.reloadData()
-                } else {
-                    self.tableView.backgroundView?.isHidden = false
-                    self.tableView.separatorStyle = .none
-                }
+                self.tableView.delegate = self
+                self.tableView.dataSource = self
+                self.tableView.reloadData()
             }
         case .failure(let error):
             print("product.sendRequest failure \(error.localizedDescription)")
         }
     }
 
-    // MARK: - Table view data source
+    @IBAction func onCheck(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "\(SendOrderViewController.self)") as! SendOrderViewController
+        vc.productData = self.productData.records
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+}
+// MARK: - Table view data source
+
+extension OrderViewController:UITableViewDataSource,UITableViewDelegate{
 
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if self.orderData.keys.count > 0 {
+            self.tableView.backgroundView?.isHidden = true
+            self.checkButton.isHidden = false
+        } else {
+            self.tableView.backgroundView?.isHidden = false
+            self.checkButton.isHidden = true
+        }
         return orderData.keys.count
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(OrderCell.self)", for: indexPath) as! OrderCell
 
         // Configure the cell...
@@ -70,50 +100,18 @@ class OrderViewController: UITableViewController {
         return cell
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "刪除") { action, view, completion in
+            let productId = Array(self.orderData.keys)[indexPath.row]
+            self.orderData.removeValue(forKey: productId)
+            OrderManager.shared.list.removeValue(forKey: productId)
+            self.tableView.reloadData()
+            completion(true)
+        }
+        deleteAction.backgroundColor = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1)
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
+        
+        return swipeConfiguration
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -37,6 +37,12 @@ class ProductDetailViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.topItem?.title = ""
+        
         quantityControlView = QuantityControlView()
         quantityControlView.product = product.fields
         quantityGroupView.addSubview(quantityControlView)
@@ -53,16 +59,15 @@ class ProductDetailViewController: UITableViewController {
         quantityGroupView.layer.borderWidth = 1
         quantityGroupView.layer.borderColor = UIColor.black.cgColor
         quantityGroupView.layer.cornerRadius = quantityGroupView.frame.height/2
-        configureCellSize()
+        configurePhotoSize()
     }
     
-    func configureCellSize() {
+    private func configurePhotoSize() {
         let flowLayout = photosCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
         
         let width = photosCollectionView.frame.width
         let height = photosCollectionView.frame.height
         flowLayout?.itemSize = CGSize(width: width, height: height)
-        print(width,height)
         
         flowLayout?.estimatedItemSize = .zero
         flowLayout?.minimumInteritemSpacing = 0

@@ -46,6 +46,7 @@ struct Order {
             let email: String
             let quantity: Int
             let productId: String
+            let productName: String
         }
         
     }

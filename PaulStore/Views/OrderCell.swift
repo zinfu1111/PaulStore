@@ -15,6 +15,7 @@ class OrderCell: UITableViewCell {
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var quantityStepper: UIStepper!
     @IBOutlet weak var photoWidth: NSLayoutConstraint!
+    @IBOutlet weak var bgView: UIView!
     
     private var product:Product.List.Record!
     private var quantity:Int!
@@ -32,6 +33,7 @@ class OrderCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.bgView.layer.cornerRadius = self.bgView.frame.height * 0.1
         configPhotoSize()
     }
     
@@ -42,8 +44,8 @@ class OrderCell: UITableViewCell {
         
         nameLabel.text = product.fields.name
         pointLabel.text = "$\(product.fields.point)"
-        quantityLabel.text = "\(quantity)"
         quantityStepper.value = Double(quantity)
+        quantityLabel.text = String(format: "數量：%d", quantity)
         
         downloadPhoto()
     }
@@ -89,6 +91,9 @@ class OrderCell: UITableViewCell {
     }
 
     @IBAction func stepperChange(_ sender: UIStepper) {
+        
+        OrderManager.shared.updateOrder(by: product.id, add: Int(sender.value))
+        quantityLabel.text = String(format: "數量：%d", Int(sender.value))
         
     }
 }

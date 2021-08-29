@@ -16,20 +16,22 @@ class HomeViewController: UIViewController {
     private var productData = Product.List(records: [])
     private var bannerData = Banner.List(records: [])
     
-    var selectedIndexPath:IndexPath?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.tintColor = .black
         
         banner.sendRequest(method: .get, reponse: Banner.List.self, completion: setupBannerData(result:))
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.selectedIndexPath = nil
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.topItem?.title = "景品瀏覽"
     }
     
     func setupBannerData(result: Result<Banner.List,Error>) {
@@ -60,7 +62,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBSegueAction func showDetail(_ coder: NSCoder) -> ProductDetailViewController? {
-        guard let indexPath = self.selectedIndexPath == nil ? self.collectionView.indexPathsForSelectedItems?.first : selectedIndexPath
+        guard let indexPath = self.collectionView.indexPathsForSelectedItems?.first
               else { return nil}
         return ProductDetailViewController(coder: coder, product: self.productData.records[indexPath.row])
     }
