@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol OrderCellDelegate {
+    func updateTotalPoint()
+}
+
 class OrderCell: UITableViewCell {
 
     @IBOutlet weak var photoImageView: UIImageView!
@@ -16,6 +20,8 @@ class OrderCell: UITableViewCell {
     @IBOutlet weak var quantityStepper: UIStepper!
     @IBOutlet weak var photoWidth: NSLayoutConstraint!
     @IBOutlet weak var bgView: UIView!
+    
+    var delegate:OrderCellDelegate?
     
     private var product:Product.List.Record!
     private var quantity:Int!
@@ -94,6 +100,6 @@ class OrderCell: UITableViewCell {
         
         OrderManager.shared.updateOrder(by: product.id, add: Int(sender.value))
         quantityLabel.text = String(format: "數量：%d", Int(sender.value))
-        
+        delegate?.updateTotalPoint()
     }
 }

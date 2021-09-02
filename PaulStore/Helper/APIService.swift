@@ -7,8 +7,9 @@
 
 import Foundation
 
-private let baseURL = "https://api.airtable.com/v0/apphC2VdXkwsSgwVS"
+
 private let apiKey = "keyk9UtV73WZD5WkQ"
+private let baseURL = "https://api.airtable.com/v0/apphC2VdXkwsSgwVS"
 
 enum APIRoute {
     

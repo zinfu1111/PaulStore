@@ -12,7 +12,8 @@ class OrderManager {
     static let shared = OrderManager()
     
     ///ProductId,Quantity
-     var list = [String:Int]()
+    var list = [String:Int]()
+    var totalPoint:Double = 0
     
     func addOrder(by productData:[Product.List.Record],name:String,phone:String,address:String,lineId:String,fbId:String,email:String) -> [Order.Create.Record] {
         

@@ -7,11 +7,12 @@
 
 import UIKit
 
-class OrderViewController: UIViewController {
+class OrderViewController: BaseViewController,OrderCellDelegate {
     
     @IBOutlet weak var emptyRstaurantView:UIView!
     @IBOutlet weak var tableView:UITableView!
     @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var totalPointLabel: UILabel!
     
     
     private var orderData = [String:Int]()
@@ -20,29 +21,26 @@ class OrderViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.tintColor = .black
-        navigationController?.navigationBar.topItem?.title = ""
+        isLargeTitles = false
+        topItemTitle = "購物車"
         
         tableView.backgroundView = emptyRstaurantView
         tableView.backgroundView?.isHidden = true
+        startSpinner()
         product.sendRequest(method: .get, reponse: Product.List.self, completion: setupProductData(result:))
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationBar.topItem?.title = "購物車"
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.checkButton.layer.cornerRadius = self.checkButton.frame.height / 2
     }
     
     func setupProductData(result: Result<Product.List,Error>) {
+        stopSpinner()
         switch result {
         case .success(let data):
             self.productData = data
@@ -51,10 +49,25 @@ class OrderViewController: UIViewController {
                 self.tableView.delegate = self
                 self.tableView.dataSource = self
                 self.tableView.reloadData()
+                self.updateTotalPoint()
             }
         case .failure(let error):
             print("product.sendRequest failure \(error.localizedDescription)")
         }
+    }
+    
+    func updateTotalPoint() {
+        
+        var totalPoint:Double = 0
+        
+        OrderManager.shared.list.forEach { (productId,quantity) in
+            if let point = productData.records.first(where: {$0.id == productId})?.fields.point {
+                totalPoint += (point * Double(quantity))
+            }
+        }
+        OrderManager.shared.totalPoint = totalPoint
+        totalPointLabel.text = "總金額：\(totalPoint)元"
+        
     }
 
     @IBAction func onCheck(_ sender: Any) {
@@ -73,10 +86,10 @@ extension OrderViewController:UITableViewDataSource,UITableViewDelegate{
         // #warning Incomplete implementation, return the number of rows
         if self.orderData.keys.count > 0 {
             self.tableView.backgroundView?.isHidden = true
-            self.checkButton.isHidden = false
+            self.checkButton.superview?.isHidden = false
         } else {
             self.tableView.backgroundView?.isHidden = false
-            self.checkButton.isHidden = true
+            self.checkButton.superview?.isHidden = true
         }
         return orderData.keys.count
     }
@@ -94,6 +107,7 @@ extension OrderViewController:UITableViewDataSource,UITableViewDelegate{
             return cell
             
         }
+        cell.delegate = self
         cell.set(for: product, quantity: quantity ?? 1)
         print("[OrderViewController] cellData index\(indexPath.row)",orderData,product)
 
@@ -106,7 +120,9 @@ extension OrderViewController:UITableViewDataSource,UITableViewDelegate{
             let productId = Array(self.orderData.keys)[indexPath.row]
             self.orderData.removeValue(forKey: productId)
             OrderManager.shared.list.removeValue(forKey: productId)
+            self.orderData = OrderManager.shared.list
             self.tableView.reloadData()
+            self.updateTotalPoint()
             completion(true)
         }
         deleteAction.backgroundColor = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1)

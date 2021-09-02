@@ -98,7 +98,6 @@ extension ProductDetailViewController: UICollectionViewDataSource,UICollectionVi
     }
     
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print(Int(scrollView.contentOffset.x) ,Int(photosCollectionView.frame.width))
         pageControl.currentPage = Int(scrollView.contentOffset.x) / Int(photosCollectionView.frame.width)
     }
     

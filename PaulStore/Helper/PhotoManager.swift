@@ -40,7 +40,6 @@ class PhotoManager {
             }
     }
     
-    
     func downloadImage(url:URL,completion: @escaping (UIImage?)-> Void) {
         
         guard let imageData = imageCache.object(forKey: url as NSURL)

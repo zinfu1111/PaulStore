@@ -28,6 +28,9 @@
 		9C37580426D55B0A0013D5F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C37580226D55B0A0013D5F1 /* LaunchScreen.storyboard */; };
 		9C37580C26D55DD90013D5F1 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C37580B26D55DD90013D5F1 /* APIService.swift */; };
 		9C37580E26D57CEF0013D5F1 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C37580D26D57CEF0013D5F1 /* Product.swift */; };
+		9C51A4C626DE78BF00CD5365 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 9C51A4C526DE78BF00CD5365 /* NVActivityIndicatorView */; };
+		9C51A4C826DE78C300CD5365 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 9C51A4C726DE78C300CD5365 /* NVActivityIndicatorViewExtended */; };
+		9C51A4CA26DE83AB00CD5365 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C51A4C926DE83AB00CD5365 /* BaseViewController.swift */; };
 		9CC480EF26D6ABE300FFF068 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9CC480EE26D6ABE300FFF068 /* Alamofire */; };
 		9CC480F126D6AC6600FFF068 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC480F026D6AC6600FFF068 /* PhotoManager.swift */; };
 		9CC4FF8726DBB0F900CF019E /* SendOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4FF8626DBB0F900CF019E /* SendOrderViewController.swift */; };
@@ -60,6 +63,7 @@
 		9C37580526D55B0A0013D5F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C37580B26D55DD90013D5F1 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		9C37580D26D57CEF0013D5F1 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		9C51A4C926DE83AB00CD5365 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		9CC480EB26D6AB0700FFF068 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		9CC480EC26D6AB0700FFF068 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		9CC480F026D6AC6600FFF068 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
@@ -73,7 +77,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CC480EF26D6ABE300FFF068 /* Alamofire in Frameworks */,
+				9C51A4C826DE78C300CD5365 /* NVActivityIndicatorViewExtended in Frameworks */,
 				9CC4FF8A26DBB6E900CF019E /* IQKeyboardManagerSwift in Frameworks */,
+				9C51A4C626DE78BF00CD5365 /* NVActivityIndicatorView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +93,7 @@
 				9C3757FB26D55B050013D5F1 /* HomeViewController.swift */,
 				9C00E57A26DA8E14009570D3 /* OrderViewController.swift */,
 				9CC4FF8626DBB0F900CF019E /* SendOrderViewController.swift */,
+				9C51A4C926DE83AB00CD5365 /* BaseViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -151,6 +158,7 @@
 			children = (
 				9C3757F626D55B050013D5F1 /* PaulStore */,
 				9C3757F526D55B050013D5F1 /* Products */,
+				9C51A4C426DE78BF00CD5365 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -177,6 +185,13 @@
 			path = PaulStore;
 			sourceTree = "<group>";
 		};
+		9C51A4C426DE78BF00CD5365 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -196,6 +211,8 @@
 			packageProductDependencies = (
 				9CC480EE26D6ABE300FFF068 /* Alamofire */,
 				9CC4FF8926DBB6E900CF019E /* IQKeyboardManagerSwift */,
+				9C51A4C526DE78BF00CD5365 /* NVActivityIndicatorView */,
+				9C51A4C726DE78C300CD5365 /* NVActivityIndicatorViewExtended */,
 			);
 			productName = PaulStore;
 			productReference = 9C3757F426D55B050013D5F1 /* PaulStore.app */;
@@ -228,6 +245,7 @@
 			packageReferences = (
 				9CC480ED26D6ABE300FFF068 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				9CC4FF8826DBB6E900CF019E /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				9C51A4C326DE783E00CD5365 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 			);
 			productRefGroup = 9C3757F526D55B050013D5F1 /* Products */;
 			projectDirPath = "";
@@ -262,6 +280,7 @@
 				9CC4FF8C26DBC42300CF019E /* Ext+UIViewController.swift in Sources */,
 				9C096C8626D80B2B00EBE935 /* BannerCell.swift in Sources */,
 				9CC480F126D6AC6600FFF068 /* PhotoManager.swift in Sources */,
+				9C51A4CA26DE83AB00CD5365 /* BaseViewController.swift in Sources */,
 				9C00E57F26DA907F009570D3 /* OrderCell.swift in Sources */,
 				9C00E56C26D9742A009570D3 /* ProductDetailViewController.swift in Sources */,
 				9C3757FC26D55B050013D5F1 /* HomeViewController.swift in Sources */,
@@ -486,6 +505,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9C51A4C326DE783E00CD5365 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
 		9CC480ED26D6ABE300FFF068 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -505,6 +532,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9C51A4C526DE78BF00CD5365 /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C51A4C326DE783E00CD5365 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
+		};
+		9C51A4C726DE78C300CD5365 /* NVActivityIndicatorViewExtended */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C51A4C326DE783E00CD5365 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorViewExtended;
+		};
 		9CC480EE26D6ABE300FFF068 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9CC480ED26D6ABE300FFF068 /* XCRemoteSwiftPackageReference "Alamofire" */;

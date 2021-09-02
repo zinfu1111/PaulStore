@@ -63,7 +63,10 @@ class SendOrderViewController: UITableViewController {
             order.sendRequest(body: createData, method: .post, reponse: Order.List.self) { result in
                 switch result {
                 case .success(_):
-                    self.showAlert(title: "申請購買已完成")
+                    self.showAlert(title: "申請購買已完成",msg: "總金額：\(OrderManager.shared.totalPoint)") { _ in
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }
+                    OrderManager.shared.clearOrder()
                 case .failure(let error):
                     self.showAlert(title: "錯誤",msg: error.localizedDescription)
                 }

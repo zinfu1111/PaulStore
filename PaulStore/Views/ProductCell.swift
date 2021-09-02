@@ -91,7 +91,6 @@ class ProductCell: UICollectionViewCell {
         
         guard let superVC = parentViewController as? HomeViewController else { return }
         OrderManager.shared.addOrder(by: product.id, add: 1)
-//        superVC.selectedIndexPath = indexPath
         superVC.performSegue(withIdentifier: "showOrder", sender: nil)
         
     }

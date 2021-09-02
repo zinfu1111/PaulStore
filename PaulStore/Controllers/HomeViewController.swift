@@ -7,9 +7,10 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var carButton: UIBarButtonItem!
     
     private var banner = Banner()
     private var product = Product()
@@ -19,26 +20,31 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        isLargeTitles = true
+        topItemTitle = "景品瀏覽"
+        carButton.addBadge(number: OrderManager.shared.list.count)
         
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.tintColor = .black
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        startSpinner()
         banner.sendRequest(method: .get, reponse: Banner.List.self, completion: setupBannerData(result:))
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.topItem?.title = "景品瀏覽"
+        carButton.updateBadge(number: OrderManager.shared.list.count)
+        
     }
     
     func setupBannerData(result: Result<Banner.List,Error>) {
+        stopSpinner()
         switch result {
         case .success(let data):
             self.bannerData = data
             DispatchQueue.main.async {
+                self.startSpinner()
                 self.product.sendRequest(method: .get, reponse: Product.List.self, completion: self.setupProductData(result:))
                 self.collectionView.dataSource = self
                 self.collectionView.delegate = self
@@ -50,6 +56,7 @@ class HomeViewController: UIViewController {
     }
     
     func setupProductData(result: Result<Product.List,Error>) {
+        stopSpinner()
         switch result {
         case .success(let data):
             self.productData = data
@@ -99,4 +106,22 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
     }
     
     
+}
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 30, bottom: 10, right: 30)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: ((UIScreen.main.bounds.width - 30 * 2) - 10)/2, height: 275)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
 }
